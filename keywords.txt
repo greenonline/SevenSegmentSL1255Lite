@@ -1,0 +1,76 @@
+SevenSeg1255	KEYWORD1
+
+begin	KEYWORD2
+
+
+draw_bitmap1	KEYWORD2
+draw_bitmapInvert1	KEYWORD2
+draw1	KEYWORD2
+drawInvert1	KEYWORD2 
+
+digit1CharWrite	KEYWORD2
+digit1OctWrite	KEYWORD2
+digit1DecWrite	KEYWORD2
+digit1HexWrite	KEYWORD2
+digit1Write	KEYWORD2
+write1	KEYWORD2
+digit1Write	KEYWORD2
+write1	KEYWORD2
+
+write	KEYWORD2
+scroll	KEYWORD2
+scrollLeft	KEYWORD2
+scrollRight	KEYWORD2
+
+blank_1	KEYWORD2
+fill_1	KEYWORD2
+flash_1	KEYWORD2
+blankx	KEYWORD2
+fillx	KEYWORD2
+flashx	KEYWORD2
+
+draw_bitmap0	KEYWORD2
+draw_bitmapInvert0	KEYWORD2
+draw0	KEYWORD2
+drawInvert0	KEYWORD2 
+
+digit0CharWrite	KEYWORD2
+digit0OctWrite	KEYWORD2
+digit0DecWrite	KEYWORD2
+digit0HexWrite	KEYWORD2
+digit0Write	KEYWORD2
+write0	KEYWORD2
+digit0Write	KEYWORD2
+write0	KEYWORD2
+
+blank_0	KEYWORD2
+fill_0	KEYWORD2
+flash_0	KEYWORD2
+
+draw_bitmap2	KEYWORD2
+draw_bitmapInvert2	KEYWORD2
+draw2	KEYWORD2
+drawInvert2	KEYWORD2 
+
+digit2CharWrite	KEYWORD2
+digit2OctWrite	KEYWORD2
+digit2DecWrite	KEYWORD2
+digit2HexWrite	KEYWORD2
+digit2Write	KEYWORD2
+write2	KEYWORD2
+digit2Write	KEYWORD2
+write2	KEYWORD2
+
+blank_2	KEYWORD2
+fill_2	KEYWORD2
+flash_2	KEYWORD2
+xblank	KEYWORD2
+xfill	KEYWORD2
+xflash	KEYWORD2
+
+blank_3	KEYWORD2
+fill_3	KEYWORD2
+flash_3	KEYWORD2
+xblankx	KEYWORD2
+xfillx	KEYWORD2
+xflashx	KEYWORD2
