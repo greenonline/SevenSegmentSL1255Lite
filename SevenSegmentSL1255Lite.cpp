@@ -182,48 +182,53 @@ const uint8_t SevenSegmentSL1255Lite::_hexTable[16] = {alphanum_0, alphanum_1, a
 const uint8_t SevenSegmentSL1255Lite::_decTable[10] = {alphanum_0, alphanum_1, alphanum_2, alphanum_3, alphanum_4, alphanum_5, alphanum_6, alphanum_7, alphanum_8, alphanum_9}; //for decWrite()
 const uint8_t SevenSegmentSL1255Lite::_octTable[8] = {alphanum_0, alphanum_1, alphanum_2, alphanum_3, alphanum_4, alphanum_5, alphanum_6, alphanum_7}; //for octWrite()
 
-//Default Constructor
-SevenSegmentSL1255Lite::SevenSegmentSL1255Lite(){
+// Constructor Methods
+
+// Default Constructor
+SevenSegmentSL1255Lite::SevenSegmentSL1255Lite(void){
   init();
 }
 
-//Constructor for digit 1
+// Constructor for digit 1
 SevenSegmentSL1255Lite::SevenSegmentSL1255Lite(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1){
   init(a1, b1, c1, d1, e1, f1, g1);
 }
 
-//Constructor for digits 1 and 2
+// Constructor for digits 1 and 2
 SevenSegmentSL1255Lite::SevenSegmentSL1255Lite(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2){
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2);
 }
 
-//Constructor for digits 1 and 2 and Seven Segment Type
+// Constructor for digits 1 and 2 and Seven Segment Type
 SevenSegmentSL1255Lite::SevenSegmentSL1255Lite(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType){
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2, ssType);
 }
 
-//Constructor for digits 1 and 2 and logical On Value and Off Value
+// Constructor for digits 1 and 2 and logical On Value and Off Value
 SevenSegmentSL1255Lite::SevenSegmentSL1255Lite(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue){
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2, onValue, offValue);
 }
 
 
-//Initialiser called by default constructor
+// Initialiser Methods
+// Called by constructors
+
+// Initialiser called by default constructor
 void SevenSegmentSL1255Lite::init(void) {
   init(default_a1, default_b1, default_c1, default_d1, default_e1, default_f1, default_g1);
 }
 
-//Initialiser called by constructor for digit 1
+// Initialiser called by constructor for digit 1
 void SevenSegmentSL1255Lite::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1) {
   init(a1, b1, c1, d1, e1, f1, g1, default_a2, default_b2, default_c2, default_d2, default_e2, default_f2, default_g2);
 }
 
-//Initialiser called by constructor for digits 1 and 2
+// Initialiser called by constructor for digits 1 and 2
 void SevenSegmentSL1255Lite::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2) {
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2, default_onValue, default_offValue);
 }
 
-//Initialiser called by constructor for digits 1 and 2 and Seven Segment Type
+// Initialiser called by constructor for digits 1 and 2 and Seven Segment Type
 void SevenSegmentSL1255Lite::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType) {
 
   _ssType=ssType;
@@ -242,7 +247,7 @@ void SevenSegmentSL1255Lite::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1
   //could call init (a1...g2, on, off) in this if construct
 }
 
-//Initialiser called by constructor for digits 1 and 2 and and logical On Value and Off Value
+// Initialiser called by constructor for digits 1 and 2 and logical On Value and Off Value
 void SevenSegmentSL1255Lite::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue) {
   _a1=a1;
   _b1=b1;
@@ -288,7 +293,7 @@ void SevenSegmentSL1255Lite::begin(void) {
 }
 
 
-// Bitmap
+// Bitmap Methods
 /*
 void SevenSegmentSL1255Lite::draw_bitmapx(uint8_t character) {
 	if ((character >> 0) & 1)
@@ -406,13 +411,13 @@ void SevenSegmentSL1255Lite::drawInvert1(uint8_t segmentMapCode) { //calls draw_
 	draw_bitmapInvert1(segmentMapCode);
 }
 
-// Put
+// Put Methods
 //void SevenSegmentSL1255Lite::putc(char character) {}
 //void SevenSegmentSL1255Lite::putchar(char character){}
 
-// Write Routines
+// Write Methods
 
-//Write to Digit 2 (Least Significant Digit) - Using SL-1255 notion
+// Write to Digit 2 (Least Significant Digit) - Using SL-1255 notion
 // Write ASCII character to Digit 2 (LSD)
 void SevenSegmentSL1255Lite::digit2CharWrite(char character) {
 	uint8_t value = character;
@@ -460,7 +465,7 @@ void SevenSegmentSL1255Lite::write2(char character) {
 	digit2Write(character);
 }
 
-//Write to Digit 0 (Least Significant Digit) - Using standard notion
+// Write to Digit 0 (Least Significant Digit) - Using standard notion
 // Write ASCII character to Digit 0 (LSD)
 void SevenSegmentSL1255Lite::digit0CharWrite(char character) {
 	uint8_t value = character;
@@ -508,7 +513,7 @@ void SevenSegmentSL1255Lite::write0(char character) {
 	digit0Write(character);
 }
 
-//Write to Digit 1 (Most Significant Digit) - Using standard notion
+// Write to Digit 1 (Most Significant Digit) - Using standard notion
 // Write ASCII character to Digit 1 (MSD)
 void SevenSegmentSL1255Lite::digit1CharWrite(char character) {
 	uint8_t value = character;
@@ -585,6 +590,43 @@ void SevenSegmentSL1255Lite::write(char characters[]) {
 	}
 
 }
+
+void SevenSegmentSL1255Lite::write(uint8_t value, uint8_t digit) {
+	//if value<=9
+	if (value <= 9) {
+		switch (digit) {
+			case 0 :
+				digit0Write(value);
+				break;
+			case 1 :
+				digit1Write(value);
+				break;
+			case 2 :
+				digit2Write(value);
+				break;
+			default :
+				break;
+		}
+    }
+}
+
+void SevenSegmentSL1255Lite::write(char character, uint8_t digit) {
+	switch (digit) {
+		case 0 :
+			digit0Write(character);
+			break;
+		case 1 :
+			digit1Write(character);
+			break;
+		case 2 :
+			digit2Write(character);
+			break;
+		default :
+			break;
+	}
+}
+
+// Scroll Methods
 
 //scroll() is a default left scroll method
 void SevenSegmentSL1255Lite::scroll(char characters[]) {
@@ -724,42 +766,9 @@ void SevenSegmentSL1255Lite::scrollRight(char characters[], int delayBetweenScro
 	delay(delayBetweenScroll);		// Delay before ending scroll
 }
 
-void SevenSegmentSL1255Lite::write(uint8_t value, uint8_t digit) {
-	//if value<=9
-	if (value <= 9) {
-		switch (digit) {
-			case 0 :
-				digit0Write(value);
-				break;
-			case 1 :
-				digit1Write(value);
-				break;
-			case 2 :
-				digit2Write(value);
-				break;
-			default :
-				break;
-		}
-    }
-}
-
-void SevenSegmentSL1255Lite::write(char character, uint8_t digit) {
-	switch (digit) {
-		case 0 :
-			digit0Write(character);
-			break;
-		case 1 :
-			digit1Write(character);
-			break;
-		case 2 :
-			digit2Write(character);
-			break;
-		default :
-			break;
-	}
-}
-
-// Effects
+// Effects Methods
+// *** Most Significant Digit ***
+// Effects (1st digit)
 
 void SevenSegmentSL1255Lite::blank_1(void) {
   digitalWrite(_a1,_offValue);
@@ -801,10 +810,12 @@ void SevenSegmentSL1255Lite::flashx(int totaldelay) {
 }
 
 
+// End Effects First Digit
+
+
+// Effects Methods
 // *** Least Significant Digit ***
-
-// Effects (1st digit)
-
+// Effects (2nd digit)
 
 void SevenSegmentSL1255Lite::blank_0(void) {
   digitalWrite(_a2,_offValue);
@@ -834,8 +845,12 @@ void SevenSegmentSL1255Lite::flash_0(int totaldelay) {
 }
 
 
-// Using SL-1255 Notion of LSD Digit 0 is Digit 2
-// Effects (1st digit) (Least Significant)
+// End Effects Second Digit
+
+// Effects Methods
+// *** Least Significant Digit ***
+// Using SL-1255 Notion of LSD (Digit 0) is Digit 2
+// Effects (2nd digit)
 
 void SevenSegmentSL1255Lite::blank_2(void) {
   digitalWrite(_a2,_offValue);
@@ -877,8 +892,14 @@ void SevenSegmentSL1255Lite::xflash(int totaldelay) {
 }
 
 
+// End Effects Second Digit
 
-// Simultaneous Effects on digits 1 and 2
+
+// Effects Methods
+// *** Most and Least Significant Digit ***
+// Using SL-1255 Notion of MSD is Digit 1 and LSD (Digit 0) is Digit 2
+// Effects (1st and 2nd digits)
+// Simultaneous Effects on digits 1 and 2 (1 + 2 = 3)
 
 void SevenSegmentSL1255Lite::blank_3(void) {
   blank_1();
@@ -909,3 +930,5 @@ void SevenSegmentSL1255Lite::xflashx(int totaldelay) {
   flash_3(totaldelay);
 }
 
+
+// End Effects Both Digits
