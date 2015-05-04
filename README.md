@@ -14,7 +14,7 @@ Brief
 
 This is an Arduino Library for the Sanyo SL-1255-30 two digit seven segment display (without decimal points). 
 
-This library is identical to the SevenSegmentSL1255 library, but has had most of the effects routines removed (leaving only blank, fil and flash methods), and has no 'direct draw' methods, as it relies solely on the bitmap (segment map) drawing methods. Also, there are no accessors, not segement or pin state getters and setters.
+This library is identical to the SevenSegmentSL1255 library, but has had most of the effects routines removed (leaving only blank, fill and flash methods), and has no 'direct draw' methods, as it relies solely on the bitmap (segment map) drawing methods. Also, there are no accessors, nor segment nor pin state getters and setters.
 
 Introduction
 ============
@@ -51,6 +51,7 @@ Library Contents
     documentation/schematics/SL-1255_Nano_bb_fritzing-01.jpg
     documentation/schematics/SL-1255_Nano.fzz
     documentation/schematics/sevenSegmentASCIIMaps.jpg
+    documentation/schematics/sevenSegmentASCIIMaps.png
 
 Default Pinout
 ==============
