@@ -102,6 +102,10 @@ Please report any!
 class SevenSegmentSL1255Lite
 {
     public:
+
+      // Constructor Methods
+
+	  // Default Constructor
       SevenSegmentSL1255Lite();
       SevenSegmentSL1255Lite(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
       SevenSegmentSL1255Lite(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);
@@ -112,39 +116,42 @@ class SevenSegmentSL1255Lite
 
 
       // Bitmap Methods
+
       // uint8_t segmentMapCode is the bitwise byte of the segments to light (g1f1e1d1c1b1a1)
-      void draw_bitmap2(uint8_t segmentMapCode);
-      void draw_bitmapInvert2(uint8_t segmentMapCode);
-      void draw2(uint8_t segmentMapCode); //just calls draw_bitmap2()
-      void drawInvert2(uint8_t segmentMapCode); //just calls draw_bitmapInvert2()
+      void draw_bitmap1(uint8_t segmentMapCode);
+      void draw_bitmapInvert1(uint8_t segmentMapCode);
+      void draw1(uint8_t segmentMapCode); //just calls draw_bitmap1()
+      void drawInvert1(uint8_t segmentMapCode); //just calls draw_bitmapInvert1()
 
       void draw_bitmap0(uint8_t segmentMapCode);
       void draw_bitmapInvert0(uint8_t segmentMapCode);
       void draw0(uint8_t segmentMapCode); //just calls draw_bitmap0()
       void drawInvert0(uint8_t segmentMapCode); //just calls draw_bitmapInvert0()
 
-      void draw_bitmap1(uint8_t segmentMapCode);
-      void draw_bitmapInvert1(uint8_t segmentMapCode);
-      void draw1(uint8_t segmentMapCode); //just calls draw_bitmap1()
-      void drawInvert1(uint8_t segmentMapCode); //just calls draw_bitmapInvert1()
+      void draw_bitmap2(uint8_t segmentMapCode);
+      void draw_bitmapInvert2(uint8_t segmentMapCode);
+      void draw2(uint8_t segmentMapCode); //just calls draw_bitmap2()
+      void drawInvert2(uint8_t segmentMapCode); //just calls draw_bitmapInvert2()
 
       // Put Methods
+
 //      void putc(char character);
 //      void putchar(char character);
 
       // Write Methods
+
       // char character is the ascii code of the character to draw
-      void digit2CharWrite(char character);
+      void digit1CharWrite(char character);
       // uint8_t value is the octal numerical value to draw (0-7)
-      void digit2OctWrite(uint8_t value);
+      void digit1OctWrite(uint8_t value);
       // uint8_t value is the decimal numerical value to draw (0-9)
-      void digit2DecWrite(uint8_t value);
-      // uint8_t value is the numerical value to draw (0-F)
-      void digit2HexWrite(uint8_t value);
-      void digit2Write(uint8_t value);
-      void write2(uint8_t value); //just calls digit2Write(uint8_t value)
-      void digit2Write(char character);
-      void write2(char character); //just calls digit2Write(char character)
+      void digit1DecWrite(uint8_t value);
+      // uint8_t value is the hexadecimal numerical value to draw (0-F)
+      void digit1HexWrite(uint8_t value);
+      void digit1Write(uint8_t value);
+      void write1(uint8_t value); //just calls digit1Write(uint8_t value)
+      void digit1Write(char character);
+      void write1(char character); //just calls digit1Write(char character)
 
       // char character is the ascii code of the character to draw
       void digit0CharWrite(char character);
@@ -160,18 +167,17 @@ class SevenSegmentSL1255Lite
       void write0(char character); //just calls digit0Write(char character)
 
       // char character is the ascii code of the character to draw
-      void digit1CharWrite(char character);
+      void digit2CharWrite(char character);
       // uint8_t value is the octal numerical value to draw (0-7)
-      void digit1OctWrite(uint8_t value);
+      void digit2OctWrite(uint8_t value);
       // uint8_t value is the decimal numerical value to draw (0-9)
-      void digit1DecWrite(uint8_t value);
-      // uint8_t value is the hexadecimal numerical value to draw (0-F)
-      void digit1HexWrite(uint8_t value);
-      void digit1Write(uint8_t value);
-      void write1(uint8_t value); //just calls digit1Write(uint8_t value)
-      void digit1Write(char character);
-      void write1(char character); //just calls digit1Write(char character)
-
+      void digit2DecWrite(uint8_t value);
+      // uint8_t value is the numerical value to draw (0-F)
+      void digit2HexWrite(uint8_t value);
+      void digit2Write(uint8_t value);
+      void write2(uint8_t value); //just calls digit2Write(uint8_t value)
+      void digit2Write(char character);
+      void write2(char character); //just calls digit2Write(char character)
       void write(uint8_t value); // have overload led?, prints two digits, calls write1 and write0, which each do only one digit (LSD, MSD?) <99
       void write(char characters[]);// two char array, string 2 characters
 
@@ -179,6 +185,7 @@ class SevenSegmentSL1255Lite
       void write(char character, uint8_t digit);// write to specific digit, calls digit1Write(char character) or digit0Write(char character) as appropriate
 
 	  //Scroll Methods
+
 	  //Default scroll() is to scroll left
       void scroll(char characters[]);// two char array, string 2 characters
       void scroll(char characters[], int delay);// two char array, string 2 characters
@@ -192,6 +199,7 @@ class SevenSegmentSL1255Lite
 
 
       // Effects Methods
+
       // *** Most Significant Digit ***
 	  // Effects (1st digit)
       void blankx(void);
@@ -203,6 +211,7 @@ class SevenSegmentSL1255Lite
 
 
       // Effects Methods
+
       // *** Least Significant Digit ***
 	  // Effects (2nd digit)
       void blank_0(void);
@@ -210,6 +219,7 @@ class SevenSegmentSL1255Lite
       void flash_0(int totaldelay);
 
       // Effects Methods
+
       // *** Least Significant Digit ***
 	  // Using SL-1255 Notion of LSD (Digit 0) is Digit 2
 	  // Effects (2nd digit)
@@ -221,6 +231,7 @@ class SevenSegmentSL1255Lite
       void flash_2(int totaldelay);
 
       // Effects Methods
+
       // *** Most and Least Significant Digit ***
 	  // Using SL-1255 Notion of MSD is Digit 1 and LSD (Digit 0) is Digit 2
 	  // Effects (1st and 2nd digits)
@@ -235,8 +246,10 @@ class SevenSegmentSL1255Lite
 
 
     private:
+
       //Initialiser Methods
       //Called by constructors
+
       void init(void);
       void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
       void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);

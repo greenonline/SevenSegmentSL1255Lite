@@ -294,6 +294,7 @@ void SevenSegmentSL1255Lite::begin(void) {
 
 
 // Bitmap Methods
+
 /*
 void SevenSegmentSL1255Lite::draw_bitmapx(uint8_t character) {
 	if ((character >> 0) & 1)
@@ -327,62 +328,6 @@ void SevenSegmentSL1255Lite::draw_bitmapx(uint8_t character) {
 }
 */
 
-void SevenSegmentSL1255Lite::draw_bitmap2(uint8_t segmentMapCode) {
-	digitalWrite(_a2, (((segmentMapCode >> 0) & 1)? _onValue : _offValue));
-	digitalWrite(_b2, (((segmentMapCode >> 1) & 1)? _onValue : _offValue));
-	digitalWrite(_c2, (((segmentMapCode >> 2) & 1)? _onValue : _offValue));
-	digitalWrite(_d2, (((segmentMapCode >> 3) & 1)? _onValue : _offValue));
-	digitalWrite(_e2, (((segmentMapCode >> 4) & 1)? _onValue : _offValue));
-	digitalWrite(_f2, (((segmentMapCode >> 5) & 1)? _onValue : _offValue));
-	digitalWrite(_g2, (((segmentMapCode >> 6) & 1)? _onValue : _offValue));
-}
-
-void SevenSegmentSL1255Lite::draw_bitmapInvert2(uint8_t segmentMapCode) {
-	digitalWrite(_a2, (!((segmentMapCode >> 0) & 1)? _onValue : _offValue));
-	digitalWrite(_b2, (!((segmentMapCode >> 1) & 1)? _onValue : _offValue));
-	digitalWrite(_c2, (!((segmentMapCode >> 2) & 1)? _onValue : _offValue));
-	digitalWrite(_d2, (!((segmentMapCode >> 3) & 1)? _onValue : _offValue));
-	digitalWrite(_e2, (!((segmentMapCode >> 4) & 1)? _onValue : _offValue));
-	digitalWrite(_f2, (!((segmentMapCode >> 5) & 1)? _onValue : _offValue));
-	digitalWrite(_g2, (!((segmentMapCode >> 6) & 1)? _onValue : _offValue));
-}
-
-void SevenSegmentSL1255Lite::draw2(uint8_t segmentMapCode) { //calls draw_bitmap(void) {
-	draw_bitmap2(segmentMapCode);
-}
-
-void SevenSegmentSL1255Lite::drawInvert2(uint8_t segmentMapCode) { //calls draw_bitmap()
-	draw_bitmapInvert2(segmentMapCode);
-}
-
-void SevenSegmentSL1255Lite::draw_bitmap0(uint8_t segmentMapCode) {
-	digitalWrite(_a2, (((segmentMapCode >> 0) & 1)? _onValue : _offValue));
-	digitalWrite(_b2, (((segmentMapCode >> 1) & 1)? _onValue : _offValue));
-	digitalWrite(_c2, (((segmentMapCode >> 2) & 1)? _onValue : _offValue));
-	digitalWrite(_d2, (((segmentMapCode >> 3) & 1)? _onValue : _offValue));
-	digitalWrite(_e2, (((segmentMapCode >> 4) & 1)? _onValue : _offValue));
-	digitalWrite(_f2, (((segmentMapCode >> 5) & 1)? _onValue : _offValue));
-	digitalWrite(_g2, (((segmentMapCode >> 6) & 1)? _onValue : _offValue));
-}
-
-void SevenSegmentSL1255Lite::draw_bitmapInvert0(uint8_t segmentMapCode) {
-	digitalWrite(_a2, (!((segmentMapCode >> 0) & 1)? _onValue : _offValue));
-	digitalWrite(_b2, (!((segmentMapCode >> 1) & 1)? _onValue : _offValue));
-	digitalWrite(_c2, (!((segmentMapCode >> 2) & 1)? _onValue : _offValue));
-	digitalWrite(_d2, (!((segmentMapCode >> 3) & 1)? _onValue : _offValue));
-	digitalWrite(_e2, (!((segmentMapCode >> 4) & 1)? _onValue : _offValue));
-	digitalWrite(_f2, (!((segmentMapCode >> 5) & 1)? _onValue : _offValue));
-	digitalWrite(_g2, (!((segmentMapCode >> 6) & 1)? _onValue : _offValue));
-}
-
-void SevenSegmentSL1255Lite::draw0(uint8_t segmentMapCode) { //calls draw_bitmap(void) {
-	draw_bitmap0(segmentMapCode);
-}
-
-void SevenSegmentSL1255Lite::drawInvert0(uint8_t segmentMapCode) { //calls draw_bitmap()
-	draw_bitmapInvert0(segmentMapCode);
-}
-
 void SevenSegmentSL1255Lite::draw_bitmap1(uint8_t segmentMapCode) {
 	digitalWrite(_a1, (((segmentMapCode >> 0) & 1)? _onValue : _offValue));
 	digitalWrite(_b1, (((segmentMapCode >> 1) & 1)? _onValue : _offValue));
@@ -411,107 +356,56 @@ void SevenSegmentSL1255Lite::drawInvert1(uint8_t segmentMapCode) { //calls draw_
 	draw_bitmapInvert1(segmentMapCode);
 }
 
+void SevenSegmentSL1255Lite::draw_bitmap0(uint8_t segmentMapCode) {
+	draw_bitmap2(segmentMapCode);
+}
+
+void SevenSegmentSL1255Lite::draw_bitmapInvert0(uint8_t segmentMapCode) {
+	draw_bitmapInvert2(segmentMapCode);
+}
+
+void SevenSegmentSL1255Lite::draw0(uint8_t segmentMapCode) { //calls draw_bitmap(void) {
+	draw_bitmap2(segmentMapCode);
+}
+
+void SevenSegmentSL1255Lite::drawInvert0(uint8_t segmentMapCode) { //calls draw_bitmap()
+	draw_bitmapInvert2(segmentMapCode);
+}
+
+void SevenSegmentSL1255Lite::draw_bitmap2(uint8_t segmentMapCode) {
+	digitalWrite(_a2, (((segmentMapCode >> 0) & 1)? _onValue : _offValue));
+	digitalWrite(_b2, (((segmentMapCode >> 1) & 1)? _onValue : _offValue));
+	digitalWrite(_c2, (((segmentMapCode >> 2) & 1)? _onValue : _offValue));
+	digitalWrite(_d2, (((segmentMapCode >> 3) & 1)? _onValue : _offValue));
+	digitalWrite(_e2, (((segmentMapCode >> 4) & 1)? _onValue : _offValue));
+	digitalWrite(_f2, (((segmentMapCode >> 5) & 1)? _onValue : _offValue));
+	digitalWrite(_g2, (((segmentMapCode >> 6) & 1)? _onValue : _offValue));
+}
+
+void SevenSegmentSL1255Lite::draw_bitmapInvert2(uint8_t segmentMapCode) {
+	digitalWrite(_a2, (!((segmentMapCode >> 0) & 1)? _onValue : _offValue));
+	digitalWrite(_b2, (!((segmentMapCode >> 1) & 1)? _onValue : _offValue));
+	digitalWrite(_c2, (!((segmentMapCode >> 2) & 1)? _onValue : _offValue));
+	digitalWrite(_d2, (!((segmentMapCode >> 3) & 1)? _onValue : _offValue));
+	digitalWrite(_e2, (!((segmentMapCode >> 4) & 1)? _onValue : _offValue));
+	digitalWrite(_f2, (!((segmentMapCode >> 5) & 1)? _onValue : _offValue));
+	digitalWrite(_g2, (!((segmentMapCode >> 6) & 1)? _onValue : _offValue));
+}
+
+void SevenSegmentSL1255Lite::draw2(uint8_t segmentMapCode) { //calls draw_bitmap(void) {
+	draw_bitmap2(segmentMapCode);
+}
+
+void SevenSegmentSL1255Lite::drawInvert2(uint8_t segmentMapCode) { //calls draw_bitmap()
+	draw_bitmapInvert2(segmentMapCode);
+}
+
 // Put Methods
+
 //void SevenSegmentSL1255Lite::putc(char character) {}
 //void SevenSegmentSL1255Lite::putchar(char character){}
 
 // Write Methods
-
-// Write to Digit 2 (Least Significant Digit) - Using SL-1255 notion
-// Write ASCII character to Digit 2 (LSD)
-void SevenSegmentSL1255Lite::digit2CharWrite(char character) {
-	uint8_t value = character;
-	if ((value >= 0) && (value <= 127)) {
-		draw_bitmap2(_asciiTable[value]);
-	}
-}
-
-// Write Octal character to Digit 2 (LSD)
-void SevenSegmentSL1255Lite::digit2OctWrite(uint8_t value) {
-	if ((value >= 0) && (value <= 7)) {
-		draw_bitmap2(_octTable[value]);
-	}
-}
-
-// Write Decimal character to Digit 2 (LSD)
-void SevenSegmentSL1255Lite::digit2DecWrite(uint8_t value) {
-	if ((value >= 0) && (value <= 9)) {
-		draw_bitmap2(_decTable[value]);
-	}
-}
-
-// Write Hexadecimal character to Digit 2 (LSD)
-void SevenSegmentSL1255Lite::digit2HexWrite(uint8_t value) {
-	if ((value >= 0) && (value <= 15)) {
-		draw_bitmap2(_hexTable[value]);
-	}
-}
-
-void SevenSegmentSL1255Lite::digit2Write(uint8_t value) {
-	if ((value >= 0) && (value < 10)) {
-		draw_bitmap2(_decTable[value]);
-	}
-}
-
-void SevenSegmentSL1255Lite::write2(uint8_t value) {
-	digit2Write(value);
-}
-
-void SevenSegmentSL1255Lite::digit2Write(char character) {
-	digit2CharWrite(character);
-}
-
-void SevenSegmentSL1255Lite::write2(char character) {
-	digit2Write(character);
-}
-
-// Write to Digit 0 (Least Significant Digit) - Using standard notion
-// Write ASCII character to Digit 0 (LSD)
-void SevenSegmentSL1255Lite::digit0CharWrite(char character) {
-	uint8_t value = character;
-	if ((value >= 0) && (value <= 127)) {
-		draw_bitmap0(_asciiTable[value]);
-	}
-}
-
-// Write Octal character to Digit 0 (LSD)
-void SevenSegmentSL1255Lite::digit0OctWrite(uint8_t value) {
-	if ((value >= 0) && (value <= 7)) {
-		draw_bitmap0(_octTable[value]);
-	}
-}
-
-// Write Decimal character to Digit 0 (LSD)
-void SevenSegmentSL1255Lite::digit0DecWrite(uint8_t value) {
-	if ((value >= 0) && (value <= 9)) {
-		draw_bitmap0(_decTable[value]);
-	}
-}
-
-// Write Hexadecimal character to Digit 0 (LSD)
-void SevenSegmentSL1255Lite::digit0HexWrite(uint8_t value) {
-	if ((value >= 0) && (value <= 15)) {
-		draw_bitmap0(_hexTable[value]);
-	}
-}
-
-void SevenSegmentSL1255Lite::digit0Write(uint8_t value) {
-	if ((value >= 0) && (value < 10)) {
-		draw_bitmap0(_decTable[value]);
-	}
-}
-
-void SevenSegmentSL1255Lite::write0(uint8_t value) {
-	digit0Write(value);
-}
-
-void SevenSegmentSL1255Lite::digit0Write(char character) {
-	digit0CharWrite(character);
-}
-
-void SevenSegmentSL1255Lite::write0(char character) {
-	digit0Write(character);
-}
 
 // Write to Digit 1 (Most Significant Digit) - Using standard notion
 // Write ASCII character to Digit 1 (MSD)
@@ -558,7 +452,92 @@ void SevenSegmentSL1255Lite::digit1Write(char character) {
 }
 
 void SevenSegmentSL1255Lite::write1(char character) {
-	digit1Write(character);
+	digit1CharWrite(character);
+}
+
+// Write to Digit 0 (Least Significant Digit) - Using standard notion
+// Write ASCII character to Digit 0 (LSD)
+void SevenSegmentSL1255Lite::digit0CharWrite(char character) {
+	digit2CharWrite(character);
+}
+
+// Write Octal character to Digit 0 (LSD)
+void SevenSegmentSL1255Lite::digit0OctWrite(uint8_t value) {
+	digit2OctWrite(value);
+}
+
+// Write Decimal character to Digit 0 (LSD)
+void SevenSegmentSL1255Lite::digit0DecWrite(uint8_t value) {
+	digit2DecWrite(value);
+}
+
+// Write Hexadecimal character to Digit 0 (LSD)
+void SevenSegmentSL1255Lite::digit0HexWrite(uint8_t value) {
+	digit2HexWrite(value);
+}
+
+void SevenSegmentSL1255Lite::digit0Write(uint8_t value) {
+	digit2Write(value);
+}
+
+void SevenSegmentSL1255Lite::write0(uint8_t value) {
+	digit2Write(value);
+}
+
+void SevenSegmentSL1255Lite::digit0Write(char character) {
+	digit2CharWrite(character);
+}
+
+void SevenSegmentSL1255Lite::write0(char character) {
+	digit2CharWrite(character);
+}
+
+// Write to Digit 2 (Least Significant Digit) - Using SL-1255 notion
+// Write ASCII character to Digit 2 (LSD)
+void SevenSegmentSL1255Lite::digit2CharWrite(char character) {
+	uint8_t value = character;
+	if ((value >= 0) && (value <= 127)) {
+		draw_bitmap2(_asciiTable[value]);
+	}
+}
+
+// Write Octal character to Digit 2 (LSD)
+void SevenSegmentSL1255Lite::digit2OctWrite(uint8_t value) {
+	if ((value >= 0) && (value <= 7)) {
+		draw_bitmap2(_octTable[value]);
+	}
+}
+
+// Write Decimal character to Digit 2 (LSD)
+void SevenSegmentSL1255Lite::digit2DecWrite(uint8_t value) {
+	if ((value >= 0) && (value <= 9)) {
+		draw_bitmap2(_decTable[value]);
+	}
+}
+
+// Write Hexadecimal character to Digit 2 (LSD)
+void SevenSegmentSL1255Lite::digit2HexWrite(uint8_t value) {
+	if ((value >= 0) && (value <= 15)) {
+		draw_bitmap2(_hexTable[value]);
+	}
+}
+
+void SevenSegmentSL1255Lite::digit2Write(uint8_t value) {
+	if ((value >= 0) && (value < 10)) {
+		draw_bitmap2(_decTable[value]);
+	}
+}
+
+void SevenSegmentSL1255Lite::write2(uint8_t value) {
+	digit2Write(value);
+}
+
+void SevenSegmentSL1255Lite::digit2Write(char character) {
+	digit2CharWrite(character);
+}
+
+void SevenSegmentSL1255Lite::write2(char character) {
+	digit2CharWrite(character);
 }
 
 void SevenSegmentSL1255Lite::write(uint8_t value) {
@@ -588,7 +567,6 @@ void SevenSegmentSL1255Lite::write(char characters[]) {
 		blank_1();
 		digit2Write(c2);
 	}
-
 }
 
 void SevenSegmentSL1255Lite::write(uint8_t value, uint8_t digit) {
@@ -767,6 +745,7 @@ void SevenSegmentSL1255Lite::scrollRight(char characters[], int delayBetweenScro
 }
 
 // Effects Methods
+
 // *** Most Significant Digit ***
 // Effects (1st digit)
 
@@ -814,6 +793,7 @@ void SevenSegmentSL1255Lite::flashx(int totaldelay) {
 
 
 // Effects Methods
+
 // *** Least Significant Digit ***
 // Effects (2nd digit)
 
@@ -848,6 +828,7 @@ void SevenSegmentSL1255Lite::flash_0(int totaldelay) {
 // End Effects Second Digit
 
 // Effects Methods
+
 // *** Least Significant Digit ***
 // Using SL-1255 Notion of LSD (Digit 0) is Digit 2
 // Effects (2nd digit)
@@ -896,6 +877,7 @@ void SevenSegmentSL1255Lite::xflash(int totaldelay) {
 
 
 // Effects Methods
+
 // *** Most and Least Significant Digit ***
 // Using SL-1255 Notion of MSD is Digit 1 and LSD (Digit 0) is Digit 2
 // Effects (1st and 2nd digits)

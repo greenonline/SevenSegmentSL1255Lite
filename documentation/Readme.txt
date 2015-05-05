@@ -9,21 +9,21 @@
 Brief
 =====
 
-This is an Arduino Library for the Sanyo SL-1255-30 two digit seven segment display (without decimal points). 
+This is an Arduino Library for the Sanyo SL-1255-30 two digit seven segment display (without decimal points).
 
-This library is identical to the SevenSegmentSL1255 library, but has had most of the effects routines removed (leaving only blank, fil and flash methods), and has no 'direct draw' methods, as it relies solely on the bitmap (segment map) drawing methods. Also, there are no accessors, not segement or pin state getters and setters.
+This library is identical to the SevenSegmentSL1255 library, but has had most of the effects routines removed (leaving only the blank(), fill() and flash() methods), and has no 'direct draw' methods, as it relies solely on the bitmap (segment map) drawing methods. Also, there are no accessors, nor segment state nor pin state getters and setters.
 
 Introduction
 ============
 
-One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common anode device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. This is a 'low fat' version of that library.
+One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common anode device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. That library is the SevenSegment1255. This is a 'low fat' version of that library, containing just the bare essentials.
 
 Synopsis
 ========
 
-When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays.
+When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays (and conversely the private member, _offValue, is HIGH).
 
-This library will also work with SL-1256 and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
+This library will also work with SL-1256 (red) and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
 
 The public methods supplied include the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). A simple set of the methods is all that is required in order to get the library up and running with your display (constructor, begin and write).
 
@@ -48,73 +48,99 @@ Library Contents
     documentation/schematics/SL-1255_Nano_bb_fritzing-01.jpg
     documentation/schematics/SL-1255_Nano.fzz
     documentation/schematics/sevenSegmentASCIIMaps.jpg
+    documentation/schematics/sevenSegmentASCIIMaps.png
 
 Default Pinout
 ==============
 
 Refer to SANYO SL-1255-30 datasheet, located at http://www.datasheetarchive.com/dlmain/Datasheets-16/DSA-305501.pdf
 
-    pin 2 -> segment a1 (15)
-    pin 3 -> segment b1 (13)
-    pin 4 -> segment c1 (1)
-    pin 5 -> segment d1 (3)
-    pin 6 -> segment e1 (2)
-    pin 7 -> segment f1 (14)
-    pin 8 -> segment g1 (16)
-    pin 9 -> segment a2 (10)
-    pin 10 -> segment b2 (12)
-    pin 11 -> segment c2 (8)
-    pin 12 -> segment d2 (6)
-    pin 13 -> segment e2 (7)
-    pin 14 -> segment f2 (11)
-    pin 15 -> segment g2 (9)
-    Vcc    -> ANODE 1 (4)
-    Vcc    -> ANODE 2 (5)
+    Arduino   Digit Segment    SL-1255 pin
+
+    pin 2  -> segment a1   ->   (15)
+    pin 3  -> segment b1   ->   (13)
+    pin 4  -> segment c1   ->   (1)
+    pin 5  -> segment d1   ->   (3)
+    pin 6  -> segment e1   ->   (2)
+    pin 7  -> segment f1   ->   (14)
+    pin 8  -> segment g1   ->   (16)
+    pin 9  -> segment a2   ->   (10)
+    pin 10 -> segment b2   ->   (12)
+    pin 11 -> segment c2   ->   (8)
+    pin 12 -> segment d2   ->   (6)
+    pin 13 -> segment e2   ->   (7)
+    pin 14 -> segment f2   ->   (11)
+    pin 15 -> segment g2   ->   (9)
+    Vcc    -> ANODE 1      ->   (4)
+    Vcc    -> ANODE 2      ->   (5)
+
+Naming Conventions/Terminology
+==============================
+
+Please note that in this documentation the left hand digit, or Most Significant Digit, (referred to as Digit 1 in the Sanyo data sheet) is referred to as the MSD, and that the right hand digit, or Least Significant Digit, (referred to as Digit 2 in the Sanyo data sheet) is referred to as the LSD.
+
+Note: Contrary to the Sanyo data sheet for the SL-1255, in this library digit 2 can also be referred to as digit 0. This has been implemented so as to facilitate the logical nature of such nomenclature. That is digit 0 being the LSD and digit 1 being the MSD.
+
+Unfortunately this has led to redundancy where digit 0 and digit 2 actually refer to the same digit, the LSD.  
+
+The MSD is also referred to as the 1st digit and the LSD as the 2nd digit (which complies with the Sanyo data sheet).
+
+The term 'segment maps' is used interchangeably with the term 'bitmaps', when referring to the codes that define which segments are used to depict the character glyphs.
+
+Command Reference
+=================
+
+The file CommandReference.txt is a simplified form of the header file, SevenSegment1255.h, and expands upon the method descriptions below.
 
 Constructor Methods
 ===================
 
-There are five various overridden constructors. Please note that all constructors configure the pins for both digits. The reason is that this library is designed for the two digital SL-1255 display. If you only want to configure the pins for just one digit, then use a sign digit version of this library. Here is a list of the constructor types:
+There are five various overridden constructors. Please note that all constructors configure the pins for both digits. The reason is that this library is designed for the two digital SL-1255 display. If you only want to configure the pins for just one digit, then use a single digit version of this library. Here is a list of the constructor types:
 
 Default
 -------
 
-Sets up the two digits using the default pins Pin2 through to Pin16.
+Sets up the two digits using the default pins D2 through to D15, with D2 to D8 driving the MSD and D9 to D15 driving the LSD.
 
 One Digit
 ---------
 
-Sets up the most significant digit (MSD) with user defined pins and the least significant digit (LSD) with Pin10 though to Pin 16.
+Sets up the most significant digit (MSD) with user defined pins and the least significant digit (LSD) with pin D9 though to pin D15.
 
 Two Digits
 ----------
 
-Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins.
+Sets up both the most significant digit (MSD) and the least significant digit (LSD) with user defined pins.
 
 Two Digits with ssType
 ----------------------
 
-Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the Seven Segment type (by the parameter ssType) using a pre-defined model {SL1255, SL1256, SL2255, SL2256} which are set to either 0 or 1 (equivalent to the OnValue being HIGH or LOW respectively).
+Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the Seven Segment type (by the parameter ssType) using a pre-defined model {SL1255, SL1256, SL2255, SL2256} which are set to either 0 or 1 (equivalent to the on state (using the parameter onValue) being HIGH or LOW respectively).
 
 Two Digits with onValue and offValue
 ------------------------------------
 
-Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the LED on state (using the parameter OnValue) to LOW or HIGH, and the LED off state (using the parameter OffValue) should be set to the complement of the OnValue, i.e. if OnValue is LOW, the OffValue should be HIGH.
-
-Draw Methods
-============
-
-These direct draw methods are derived from the first attempts at writing test code to get the SL-1255 working with the Arduino. They are left in place for completeness, and someone may find them useful. However, they have been largely superseded by the Write methods, although the drawBitmap() methods [read as drawSevenSegmentMaps()] are still useful and form the man body of the drawing routines. Most of the direct draw methods are deprecated in the Lite version of this library SevenSegLite1255. The direct draw methods use the non-standard (Arduino) naming convention of draw_Xx, where the position of the 'x' denotes which segment is being written to. So, draw_Ax() displays an 'A' character on digit1, and draw_xh() displays an 'h' character on digit 0.  This differs from the drawBitmap and Write methods that use a more conventional '0' and '1', in the method name, to denote the least significant and most significant digit of the display (and '2' to denote both digits). 
+Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the LED on state (using the parameter onValue) to LOW or HIGH, and the LED off state (using the parameter offValue) should be set to the complement of the onValue, i.e. if onValue is LOW, the offValue should be HIGH.
 
 Begin Methods
 =============
 
-These methods assign the pins of the Arduino, and should be called from the setup() function in the Arduino sketch
+This method defines the assigned pins of the Arduino as OUTPUTs, and should be called from the setup() function in the Arduino sketch.
+
+Draw Bitmap Methods
+===================
+
+These methods enable the user to pass a seven segment code that represents an alphanumeric (or ASCII) character to the method to display on either of the display's digits.
 
 Write Methods
 =============
 
 These methods enable the user to pass a numeric (octal, decimal or hexadecimal) value or alphanumeric (or ASCII) character to the method to display on either or both of the display's digits.
+
+Scroll Methods
+==============
+
+These methods enable the user to pass an alphanumeric (or ASCII) character string to the method to scroll (left or right) across both of the display's digits.
 
 Effects Methods
 ===============
