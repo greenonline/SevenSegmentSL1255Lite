@@ -137,8 +137,8 @@ Two Digits with onValue and offValue
 
 Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the LED on state (using the parameter onValue) to LOW or HIGH, and the LED off state (using the parameter offValue) should be set to the complement of the onValue, i.e. if onValue is LOW, the offValue should be HIGH.
 
-Begin Methods
-=============
+Begin Method
+============
 
 This method defines the assigned pins of the Arduino as OUTPUTs, and should be called from the setup() function in the Arduino sketch.
 
@@ -181,8 +181,7 @@ Conclusion
 
 Please enjoy using this library. 
 
-If you would prefer to employ a more heavy weight version of this library that has not been cut down, for memory economics, please consider using SevenSegmentSL1255. It may be a little heavyweight, as it is an "everything-but-the-kitchen-sink" type library, with many member methods overridden and duplicated with different function names, in order to accommodate new Arduino users, by adhering to Arduino naming standards and conventions, as well as some non standard functions, included for the convenience, and amusement, of advanced users.
-
+If you would prefer to employ a more heavy weight version of this library that has not been cut down, for memory economics, please consider using SevenSegmentSL1255. It may be a little heavy weight, as it is an "everything-but-the-kitchen-sink" type library, with many member methods overridden and duplicated with different function names, in order to accommodate new Arduino users, by adhering to Arduino naming standards and conventions, as well as some non standard functions, included for the convenience, and amusement, of advanced users.
 
 Known Issues
 ============
