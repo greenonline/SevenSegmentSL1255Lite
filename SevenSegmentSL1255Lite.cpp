@@ -438,9 +438,10 @@ void SevenSegmentSL1255Lite::digit1HexWrite(uint8_t value) {
 }
 
 void SevenSegmentSL1255Lite::digit1Write(uint8_t value) {
-	if ((value >= 0) && (value < 10)) {
-		draw_bitmap1(_decTable[value]);
-	}
+	digit1DecWrite(value);
+//	if ((value >= 0) && (value <= 9)) {
+//		draw_bitmap2(_decTable[value]);
+//	}
 }
 
 void SevenSegmentSL1255Lite::write1(uint8_t value) {
@@ -523,9 +524,10 @@ void SevenSegmentSL1255Lite::digit2HexWrite(uint8_t value) {
 }
 
 void SevenSegmentSL1255Lite::digit2Write(uint8_t value) {
-	if ((value >= 0) && (value < 10)) {
-		draw_bitmap2(_decTable[value]);
-	}
+	digit2DecWrite(value);
+//	if ((value >= 0) && (value <= 9)) {
+//		draw_bitmap2(_decTable[value]);
+//	}
 }
 
 void SevenSegmentSL1255Lite::write2(uint8_t value) {
@@ -541,12 +543,12 @@ void SevenSegmentSL1255Lite::write2(char character) {
 }
 
 void SevenSegmentSL1255Lite::write(uint8_t value) {
-	//if value<=99
-	if (value <= 99){
+	if (value <= 99){					// sanity check (value fits on two digits?)
 		uint8_t MSD = value/10;			// get the Most Significant Digit
 		uint8_t LSD = value-(MSD*10);	// get the Least Significant Digit
-		digit1Write(MSD);			//write the MSD to digit 1
-		digit2Write(LSD);			//write the LSD to digit 0, or digit 2 using SL-1255 notion
+		digit1Write(MSD);				// write the MSD to digit 1
+		digit2Write(LSD);				// write the LSD to digit 0,
+										// or digit 2 using SL-1255 notion
     }
 }
 
